@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>clock</title>
+    <link rel='stylesheet' type='text/css'  href='clk.css'>
+</head>
+<body>
+    <div class="clock">
+        <div class="hand hour" data-hour-hand></div>
+        <div class="hand minute" data-minute-hand></div>
+        <div class="hand second" data-second-hand></div>
+        
+        <div class="number number1">1</div>
+        <div class="number number2">2</div>
+        <div class="number number3">3</div>
+        <div class="number number4">4</div>
+        <div class="number number5">5</div>
+        <div class="number number6">6</div>
+        <div class="number number7">7</div>
+        <div class="number number8">8</div>
+        <div class="number number9">9</div>
+        <div class="number number10">10</div>
+        <div class="number number11">11</div>
+        <div class="number number12">12</div>
+    </div>
+
+<div id="dib"> 
+
+    <h1 style="font-size: 40PX; color: #fff; margin-left:180px; text-shadow: 20px , 30px grey;" id = "dibb"> </h1>
+</div>
+
+<script>
+setInterval(setClock, 1000)
+const hourHand = document.querySelector('[data-hour-hand]')
+const minuteHand = document.querySelector('[data-minute-hand]')
+const secondHand = document.querySelector('[data-second-hand]')
+function setClock() {
+    const currentDate = new Date()
+    const secondsRatio = currentDate.getSeconds() /60
+    const minutesRatio = (secondsRatio + currentDate.getMinutes()) /60 
+    const hoursRatio = (minutesRatio + currentDate.getHours()) /12
+    setRotation(secondHand, secondsRatio)
+    setRotation(minuteHand, minutesRatio)
+    setRotation(hourHand, hoursRatio)
+}
+function setRotation(element, rotationRatio) { element.style.setProperty('--rotation', rotationRatio * 360)}
+setClock()
+
+function sett() {
+
+var date = new Date();
+
+var h = date.getHours();
+var i = date.getMinutes();
+var j = date.getSeconds();
+
+var timee = h + ":" + i + ":" + j ;
+document.getElementById("dibb").innerText =timee;
+document.getElementById("dibb").textContent =timee;
+
+setTimeout (sett , 1000);
+}
+sett();
+
+</script>
+</body>
+</html>
